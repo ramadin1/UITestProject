@@ -13,7 +13,7 @@ formatter.feature({
   ]
 });
 formatter.before({
-  "duration": 30869410078,
+  "duration": 23073147254,
   "status": "passed"
 });
 formatter.scenario({
@@ -90,17 +90,17 @@ formatter.match({
       "offset": 19
     }
   ],
-  "location": "SmokeTest.navigatePage(String)"
+  "location": "SmokeTest.user_navigates_to(String)"
 });
 formatter.result({
-  "duration": 25429407134,
+  "duration": 10114050090,
   "status": "passed"
 });
 formatter.match({
   "location": "SmokeTest.click_login_or_register_link()"
 });
 formatter.result({
-  "duration": 1475074404,
+  "duration": 2490348884,
   "status": "passed"
 });
 formatter.match({
@@ -113,7 +113,7 @@ formatter.match({
   "location": "SmokeTest.logs_in_using_Email_as(String)"
 });
 formatter.result({
-  "duration": 15368009038,
+  "duration": 3133224954,
   "status": "passed"
 });
 formatter.match({
@@ -126,39 +126,39 @@ formatter.match({
   "location": "SmokeTest.password_as_a(String)"
 });
 formatter.result({
-  "duration": 391484950,
+  "duration": 484285815,
   "status": "passed"
 });
 formatter.match({
   "location": "SmokeTest.clicks_the_Submit_button()"
 });
 formatter.result({
-  "duration": 1242957995,
+  "duration": 728310111,
   "status": "passed"
 });
 formatter.match({
   "location": "SmokeTest.login_should_be_successful()"
 });
 formatter.result({
-  "duration": 276496,
+  "duration": 246414,
   "status": "passed"
 });
 formatter.match({
   "location": "SmokeTest.home_page_should_be_displayed()"
 });
 formatter.result({
-  "duration": 138248,
+  "duration": 153609,
   "status": "passed"
 });
 formatter.match({
   "location": "SmokeTest.should_be_able_to_logout_successfully()"
 });
 formatter.result({
-  "duration": 24056565818,
+  "duration": 8476138145,
   "status": "passed"
 });
 formatter.after({
-  "duration": 62723,
+  "duration": 3202427660,
   "status": "passed"
 });
 });

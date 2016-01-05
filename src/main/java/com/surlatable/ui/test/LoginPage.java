@@ -1,16 +1,12 @@
 package com.surlatable.ui.test;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class LoginPage {
-	    private final WebDriver driver;
+public class LoginPage extends Page{
 	    WebElement loginOrRegisteration= null;
 	    
-	    public LoginPage(WebDriver driver) {
-	        this.driver = driver;
-	        
+	    public LoginPage() {        
 	        if (!"Cookware, Cutlery, Dinnerware, Bakeware | Sur La Table".trim().equals(driver.getTitle())) {
 	            throw new IllegalStateException("This is not the login page");
 	        }
@@ -20,6 +16,12 @@ public class LoginPage {
 	        By passwordLocator = By.xpath("//*[@id='popupLoginForm']/dl/dd[2]/input[1]");
 	        By loginButtonLocator = By.id("loginBtnId");
 	        By loginOrRegister = By.linkText("Log In or Register");
+	        By firstNameLocator = By.xpath("//*[@id='popupRegisterForm']/dl/dd[1]/input[5]");
+	        By lastNameLocator = By.xpath("//*[@id='popupRegisterForm']/dl/dd[2]/input[1]");
+	        By emailLocator = By.xpath("//*[@id='popupRegisterForm']/dl/dd[3]/input[1]");
+	        By registerPasswordLocator = By.xpath("//*[@id='popupRegisterForm']/dl/dd[4]/input[1]");
+	        By registerConfigPasswordLocator = By.xpath("//*[@id='popupRegisterForm']/dl/dd[5]/input[1]");
+	        By createMyAccountLocator = By.id("registerSubBtn");
 	        
 	    public LoginPage clickLoginLink() {
 	        driver.findElement(loginOrRegister).click();
@@ -39,12 +41,23 @@ public class LoginPage {
 
 	    public HomePage submitLogin() {
 	        driver.findElement(loginButtonLocator).click();;
-	        return new HomePage(driver);    
+	        return new HomePage();    
 	    }
 
 	    public LoginPage submitLoginExpectingFailure() {
 	        driver.findElement(loginButtonLocator).submit();
-	        return new LoginPage(driver);   
+	        return new LoginPage();   
+	    }
+	    
+	    public LoginPage doRegister(String fName, String lName, String email, String psw){
+	    	loginOrRegisteration.findElement(firstNameLocator).sendKeys(fName);
+	    	loginOrRegisteration.findElement(lastNameLocator).sendKeys(lName);
+	    	loginOrRegisteration.findElement(emailLocator).sendKeys(email);
+	    	loginOrRegisteration.findElement(registerPasswordLocator).sendKeys(psw);
+	    	loginOrRegisteration.findElement(registerConfigPasswordLocator).sendKeys(psw);
+	    	loginOrRegisteration.findElement(createMyAccountLocator).click();
+	    	
+	    	return new LoginPage();  
 	    }
 
 	    public HomePage loginAs(String username, String password) {

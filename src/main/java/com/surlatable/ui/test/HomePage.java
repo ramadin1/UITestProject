@@ -1,14 +1,12 @@
 package com.surlatable.ui.test;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
-public class HomePage {
+public class HomePage extends Page{
 	
-	WebDriver driver = null;
 	
-	public HomePage(WebDriver driver){
-		this.driver = driver;
+	
+	public HomePage(){
 		String title = driver.getTitle();
 		System.out.println(title);
 		  // Check that we're on the right page.
@@ -23,7 +21,7 @@ public class HomePage {
 
     public LoginPage logOut(){
         driver.findElement(logOutLinkLocator).click();
-    	return new LoginPage(driver);
+    	return new LoginPage();
     }
 
 }

@@ -1,8 +1,4 @@
 package com.surlatable.ui.test;
-import java.util.concurrent.TimeUnit;
-
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
@@ -13,27 +9,25 @@ import cucumber.api.java.en.When;
 import junit.framework.Assert;
 
 public class SmokeTest {
-	WebDriver driver = null;
 	LoginPage loginPage = null;
 	HomePage homePage = null;
+	Page page = null;
 	
 	@Before
 	public void setup(){
-		driver = new FirefoxDriver();
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-		
+		page = new Page();
+		page.maximizeBrowser();
+		page.implicitlyWait();		
 	}
 	
 	@After
 	public void tearDown(){
-		//driver.quit();
+		page.closeBrowser();
 	}
 	
 	@Given("^user navigates to \"(.*)\"$")
-	public void navigatePage(String url) {
-		driver.navigate().to(url);
-		loginPage = new LoginPage(driver);
+	public void user_navigates_to(String url) {
+		loginPage = page.navigate(url);;
 	}
 
 	@When("^click login or register link$")
@@ -54,9 +48,8 @@ public class SmokeTest {
 	
 	@And("^clicks the Submit button$")
 	public void clicks_the_Submit_button() {
-		Object obj = loginPage.submitLogin();
-		homePage = new HomePage(driver);
-		//Assert.assertEquals(homePage, obj);
+		homePage = loginPage.submitLogin();
+		Assert.assertFalse(homePage.equals(new IllegalStateException("This is not the home page")));
 	}
 	
 	@Then("^login should be successful$")
